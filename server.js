@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
-
+require('dotenv-safe').config()
+const PORT = 8080
 //TODO:
 //conectar o db
 const db = require('./src/data/database')
@@ -14,4 +15,7 @@ app.use('/estudios', estudiosRouter)
 const titulosRouter = require('./src/routes/titulos.routes')
 app.use('/titulos', titulosRouter)
 
-app.listen(3333, () => console.log('listening on port 3333'))
+const usuariasRouter = require('./src/routes/usuarias.routes')
+app.use('/usuarias', usuariasRouter)
+
+app.listen(PORT, () => console.log(`listening on port ${PORT}`))
